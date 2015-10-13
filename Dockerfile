@@ -1,19 +1,6 @@
 FROM daocloud.io/php:5.6-apache
 
-RUN apt-get update \
-    && apt-get install -y \
-        libz-dev \
-	libjpeg-dev \
-	libpng-dev \
-	php5-gd \
-	libbz2-dev \
-	libfreetype6-dev \
-    && docker-php-ext-install \
-	pdo_mysql \
-	zip \
-    && apt-get clean \
-    && apt-get autoclean
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN  apt-get -y update && apt-get -y install mysql-client php5 ImageMagick  apache2 php5-gd php5-mysql
 
 RUN a2enmod rewrite \
     && mkdir -p /app \
