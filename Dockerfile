@@ -1,6 +1,6 @@
 FROM daocloud.io/php:5.6-apache
 
-RUN  apt-get -y update && apt-get -y install mysql-client php5 ImageMagick  apache2 php5-gd php5-mysql
+RUN  apt-get -y update && apt-get -y install php5-gd libfreetype6-dev && docker-php-ext-install pdo_mysql
 
 RUN a2enmod rewrite \
     && mkdir -p /app \
