@@ -2,24 +2,13 @@ FROM daocloud.io/php:5.6-apache
 
 RUN apt-get update \
     && apt-get install -y \
-        libmcrypt-dev \
         libz-dev \
-        git \
-        wget \
-	libxml2 \
-	libxml2-dev \
-	autoconf \
 	libjpeg-dev \
 	libpng-dev \
 	php5-gd \
-	bzip2 \
 	libbz2-dev \
-	curl \
-	libcurl4-gnutls-dev \
 	libfreetype6-dev \
     && docker-php-ext-install \
-	mcrypt \
-	mbstring \
 	pdo_mysql \
 	zip \
     && apt-get clean \
