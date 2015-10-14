@@ -11,5 +11,6 @@ RUN apt-get update && apt-get install -y \
 
 COPY . /var/www/html
 
-RUN chmod -R 0775 /var/www/html/system \
-    && chmod -R 0775 /var/www/html/system/config
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 777 /var/www/html/system \
+    && chmod -R 777 /var/www/html/system/config
