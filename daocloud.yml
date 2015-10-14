@@ -3,7 +3,15 @@ image: daocloud/ci-php:5.6
 services:
   - mysql
 
+env:
+    - MYENV = "wenda.xaccp.cn"
+
 install:
-  - docker-php-ext-install pdo_mysql
+    - echo $MYENV
+
+before_script:
+    - echo $MYENV
 
 script:
+    - echo $MYENV
+    - ping -c 2 mysql
