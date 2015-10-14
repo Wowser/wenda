@@ -9,16 +9,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd \
     && docker-php-ext-install pdo_mysql 
 
-RUN a2enmod rewrite \ 
-    && mkdir -p /app \ 
-    && rm -fr /var/www/html \ 
-    && ln -s /app/public /var/www/html 
+COPY . /var/www/html
 
-WORKDIR /app
-
-COPY . /app
-
-RUN chown -R www-data:www-data /app \  
-&& chmod -R 0777 /app/storage \
-&& chmod -R 0775 /app/system \
-&& chmod -R 0775 /app/system/config/
+RUN chmod -R 0775 /var/www/html/system \
+    && chmod -R 0775 /var/www/html/system/config
